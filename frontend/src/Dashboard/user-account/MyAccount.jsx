@@ -25,49 +25,49 @@ const MyAccount = () => {
     };
 
     return (
-        <section>
-            <div className="max-w-[1170px] px-5 mx-auto">
+        <section className="py-10">
+            <div className="max-w-[1170px] px-4 mx-auto">
                 {loading && !error && <Loading />}
                 {error && !loading && <Error errMessage={error} />}
                 {!loading && !error && userData && (
-                    <div className="grid md:grid-cols-3 gap-10">
-                        <div className="pb-[50px] rounded-md">
+                    <div className="grid md:grid-cols-3 gap-6 md:gap-10">
+                        <div className="pb-[30px] md:pb-[50px] rounded-md">
                             <div className="flex items-center justify-center">
-                                <figure className="w-[100px] h-[100px] rounded-full border-solid border-primaryColor">
+                                <figure className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full border-solid border-primaryColor">
                                     <img src={userData.photo} alt="" className="w-full h-full rounded-full" />
                                 </figure>
                             </div>
                             <div className="text-center mt-4">
-                                <h3 className="text-[10px] leading-[30px] text-headingColor font-bold">{userData.name}</h3>
-                                <p className="text-textColor text-[15px] leading-6 font-medium">{userData.email}</p>
-                                <p className="text-textColor text-[15px] leading-6 font-medium">
+                                <h3 className="text-[18px] md:text-[20px] leading-[30px] text-headingColor font-bold">{userData.name}</h3>
+                                <p className="text-textColor text-[14px] md:text-[15px] leading-6 font-medium">{userData.email}</p>
+                                <p className="text-textColor text-[14px] md:text-[15px] leading-6 font-medium">
                                     Blood Type:
-                                    <span className="ml-2 text-headingColor text-[22px] leading-8">{userData.bloodType}</span>
+                                    <span className="ml-2 text-headingColor text-[18px] md:text-[22px] leading-8">{userData.bloodType}</span>
                                 </p>
                             </div>
-                            <div className="mt-[50px] md:mt-[100px]">
+                            <div className="mt-[30px] md:mt-[50px]">
                                 <button 
                                     onClick={handleLogout} 
-                                    className="w-full bg-[#181A1E] p-3 text-[16px] leading-7 rounded-md text-white"
+                                    className="w-full bg-[#181A1E] p-3 text-[14px] md:text-[16px] leading-7 rounded-md text-white"
                                 >
                                     Logout
                                 </button>
-                                <button className="w-full bg-red-600 mt-4 p-3 text-[16px] leading-7 rounded-md text-white">
+                                <button className="w-full bg-red-600 mt-3 md:mt-4 p-3 text-[14px] md:text-[16px] leading-7 rounded-md text-white">
                                     Delete account
                                 </button>
                             </div>
                         </div>
-                        <div className="md:col-span-2 md:px-[30px]">
-                            <div>
+                        <div className="md:col-span-2 md:px-[20px] lg:px-[30px]">
+                            <div className="flex flex-wrap gap-2 md:gap-0">
                                 <button 
                                     onClick={() => setTab('bookings')}  
-                                    className={`${tab === 'bookings' ? 'bg-primaryColor text-white font-normal' : ''} p-2 mr-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor`}
+                                    className={`${tab === 'bookings' ? 'bg-primaryColor text-white font-normal' : ''} p-2 md:mr-3 lg:mr-5 rounded-md text-headingColor font-semibold text-[14px] md:text-[16px] leading-7 border border-solid border-primaryColor`}
                                 >
                                     My Bookings
                                 </button>
                                 <button 
                                     onClick={() => setTab('settings')} 
-                                    className={`${tab === 'settings' ? 'bg-primaryColor text-white font-normal' : ''} py-2 mx-5 rounded-md text-headingColor font-semibold text-[16px] leading-7 border border-solid border-primaryColor`}
+                                    className={`${tab === 'settings' ? 'bg-primaryColor text-white font-normal' : ''} py-2 px-3 md:px-5 rounded-md text-headingColor font-semibold text-[14px] md:text-[16px] leading-7 border border-solid border-primaryColor`}
                                 >
                                     Profile Settings
                                 </button>

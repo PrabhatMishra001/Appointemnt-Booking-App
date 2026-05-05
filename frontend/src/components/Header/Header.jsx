@@ -1,7 +1,7 @@
-import { useEffect, useRef, useContext } from 'react';
+import { useEffect, useRef, useContext, useState } from 'react';
 import logo from '../../assets/images/logo.png';
 import { NavLink, Link } from 'react-router-dom';
-import { BiMenu } from 'react-icons/bi';
+import { BiMenu, BiX } from 'react-icons/bi';
 import { AuthContext } from '../../context/AuthContext.jsx';
 
 const navLinks = [
@@ -15,6 +15,7 @@ const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
   const { user, role, token } = useContext(AuthContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleStickyHeader = () => {
@@ -32,7 +33,15 @@ const Header = () => {
     };
   }, []);
 
-  const toggleMenu = () => menuRef.current.classList.toggle('show_menu');
+  const toggleMenu = () => {
+    menuRef.current.classList.toggle('show_menu');
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    menuRef.current.classList.remove('show_menu');
+    setIsMenuOpen(false);
+  };
 
   useEffect(() => {
     if (user && user.photo) {
@@ -46,14 +55,17 @@ const Header = () => {
         <div className='flex items-center justify-between'>
           {/*==============logo============*/}
           <div>
-            <img src={logo} alt="Logo" />
+            <img src={logo} alt="Logo" className="w-32 md:w-40" />
           </div>
 
           {/*================menu=============*/}
           <div className='navigation' ref={menuRef}>
-            <ul className='menu flex items-center gap-[2.7rem]'>
+            <button className='mobile-menu-close' onClick={closeMenu}>
+              <BiX />
+            </button>
+            <ul className='menu flex items-center gap-4 md:gap-[2.7rem]'>
               {navLinks.map((link, index) => (
-                <li key={index}>
+                <li key={index} onClick={closeMenu}>
                   <NavLink
                     to={link.path}
                     className={(navClass) =>
@@ -70,7 +82,7 @@ const Header = () => {
           </div>
 
           {/*============nav right==========*/}
-          <div className='flex items-center gap-4'>
+          <div className='flex items-center gap-2 md:gap-4'>
             {token && user ? (
               
                 <Link to={role === 'doctor' ? '/doctors/profile/me' : '/user/profile/me'}>
@@ -88,14 +100,18 @@ const Header = () => {
                 </Link>
             ) : (
               <Link to='/login'>
-                <button className='bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]'>
+                <button className='bg-primaryColor py-2 px-4 md:px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px] text-sm md:text-base'>
                   Login
                 </button>
               </Link>
             )}
 
-            <span className='md:hidden' onClick={toggleMenu}>
-              <BiMenu className='w-6 h-6 cursor-pointer' />
+            <span className='md:hidden cursor-pointer p-2' onClick={toggleMenu}>
+              {isMenuOpen ? (
+                <BiX className='w-7 h-7' />
+              ) : (
+                <BiMenu className='w-7 h-7' />
+              )}
             </span>
           </div>
         </div>
