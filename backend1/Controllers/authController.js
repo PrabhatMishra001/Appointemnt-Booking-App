@@ -8,7 +8,7 @@ const generateToken=user=>{
 }
 
 export const register= async(req,res)=>{
-   const{email,password,name,role,photo,gender}=req.body
+const{email,password,name,role,photo,gender,specialization,qualifications,experiences,bio}=req.body
     try{
         let user=null
         if(role=='patient'){
@@ -38,13 +38,17 @@ if(role=='patient'){
     })
 }
     if(role=='doctor'){
-        user=new Doctor({
+user=new Doctor({
             name,
             email,
             password:hashPassword,
             photo,
             gender,
-            role
+            role,
+            specialization,
+            qualifications,
+            experiences,
+            bio
         })
         
 }

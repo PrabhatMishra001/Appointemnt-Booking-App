@@ -81,9 +81,9 @@ const Footer = () => {
   return (
     <footer className='pb-16 pt-10'>
       <div className="container">
-        <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px] ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-[30px] ">
           <div>
-            <img src={logo} alt="" />
+            <img src={logo} alt="" className="w-32 md:w-40" />
             <p className="text-[16px] leading-7 font-[400] text-textColor mt-4 ">
               Copyright © {year} developed by Prabhat Mishra.
             </p>
@@ -92,27 +92,27 @@ const Footer = () => {
             </div>
           </div>
         <div>
-          <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor "> Quick Links</h2>
+          <h2 className="text-[20px] leading-[30px] font-[700] mb-4 lg:mb-6 text-headingColor "> Quick Links</h2>
           <ul>
-            {quickLinks01.map((item,index)=>(<li key={index} className='mb-4'>
+            {quickLinks01.map((item,index)=>(<li key={index} className='mb-3 lg:mb-4'>
               <Link to={item.path} className='text-[16px] leading-7 font-[400] text-textColor '>{item.display} </Link>
             </li> ))}
           </ul>
         </div>
 
         <div>
-          <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor ">  I want To:</h2>
+          <h2 className="text-[20px] leading-[30px] font-[700] mb-4 lg:mb-6 text-headingColor ">  I want To:</h2>
           <ul>
-            {quickLinks02.map((item,index)=>(<li key={index} className='mb-4'>
+            {quickLinks02.map((item,index)=>(<li key={index} className='mb-3 lg:mb-4'>
               <Link to={item.path} className='text-[16px] leading-7 font-[400] text-textColor '>{item.display} </Link>
             </li> ))}
           </ul>
         </div>
 
         <div>
-          <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor ">Support</h2>
+          <h2 className="text-[20px] leading-[30px] font-[700] mb-4 lg:mb-6 text-headingColor ">Support</h2>
           <ul>
-            {quickLinks03.map((item,index)=>(<li key={index} className='mb-4'>
+            {quickLinks03.map((item,index)=>(<li key={index} className='mb-3 lg:mb-4'>
               <Link to={item.path} className='text-[16px] leading-7 font-[400] text-textColor '>{item.display} </Link>
             </li> ))}
           </ul>

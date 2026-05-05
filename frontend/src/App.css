@@ -27,12 +27,13 @@ body {
     height: 100%;
     position: fixed;
     top: 0;
-    right: -100%; /* Slide in from the right */
+    right: -100%;
     z-index: 100;
-    background: #00000084;
+    background: rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
   }
   .show_menu {
-    right: 0; /* Slide the menu in */
+    right: 0;
   }
 
  .menu {
@@ -44,8 +45,39 @@ body {
   background: #fff;
   z-index: 200;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 30px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 80px 20px 20px 20px;
+  line-height: 40px;
+  gap: 1rem !important;
 } 
+
+.menu li {
+  width: 100%;
+}
+
+.menu li a {
+  display: block;
+  width: 100%;
+}
+}
+
+/* Mobile menu close button */
+.mobile-menu-close {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  .mobile-menu-close {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #181A1E;
+    z-index: 201;
+  }
 }

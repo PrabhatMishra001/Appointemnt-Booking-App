@@ -34,23 +34,23 @@ const SidePanel = ({ doctorId, ticketPrice, timeSlots }) => {
   };
 
   return (
-    <div className="shadow-panelShadow p-3 lg:p-5 rounded-md">
+    <div className="shadow-panelShadow p-3 lg:p-5 rounded-md mt-6 md:mt-0">
       <div className="flex items-center justify-between">
         <p className="text_para mt-0 font-semibold">Ticket Price</p>
-        <span className="text-[16px] leading-7 lg:text-[22px] lg:leading-8 text-headingColor font-bold">{ticketPrice} BDT</span>
+        <span className="text-[14px] md:text-[16px] lg:text-[22px] leading-6 md:leading-7 lg:leading-8 text-headingColor font-bold">{ticketPrice} BDT</span>
       </div>
-      <div className="mt-[30px]">
+      <div className="mt-[20px] md:mt-[30px]">
         <p className="text_para mt-0 font-semibold text-headingColor">Available Time Slots</p>
-        <ul className="mt-3">
+        <ul className="mt-2 md:mt-3">
           {timeSlots?.map((item, index) => (
             <li key={index} className="flex items-center justify-between mb-2">
-              <p className="text-[15px] leading-6 text-textColor font-semibold">{item.day}</p>
-              <p className="text-[15px] leading-6 text-textColor font-semibold">{item.startingTime}-{item.endingTime}</p>
+              <p className="text-[13px] md:text-[15px] leading-5 md:leading-6 text-textColor font-semibold">{item.day}</p>
+              <p className="text-[13px] md:text-[15px] leading-5 md:leading-6 text-textColor font-semibold">{item.startingTime}-{item.endingTime}</p>
             </li>
           ))}
         </ul>
       </div>
-      <button onClick={bookingHandler} className="btn px-2 w-full rounded-md">Book Appointment</button>
+      <button onClick={bookingHandler} className="btn px-2 w-full rounded-md mt-4">Book Appointment</button>
     </div>
   );
 };

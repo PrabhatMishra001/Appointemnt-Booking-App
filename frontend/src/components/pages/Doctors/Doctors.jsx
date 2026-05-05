@@ -25,29 +25,29 @@ const Doctors = () => {
 
   return (
     <>
-      <section className="bg-[#fff9ea] ">
-        <div className="container text-center">
+      <section className="bg-[#fff9ea] py-6 md:py-10">
+        <div className="container text-center px-4">
           <h2 className="heading">Find a Doctor</h2>
-          <div className="max-w-[570px] mt-[30px] mx-auto bg-[#0066ff2c] rounded-md flex items-center justify-between">
+          <div className="max-w-[570px] mt-5 md:mt-[30px] mx-auto bg-[#0066ff2c] rounded-md flex flex-col md:flex-row items-center justify-between gap-2 p-2">
             <input 
               type="search" 
-              className="py-4 pl-4 pr-2 bg-transparent w-full focus:outline-none cursor-pointer placeholder:text-textColor" 
+              className="py-3 md:py-4 pl-4 pr-2 bg-transparent w-full focus:outline-none cursor-pointer placeholder:text-textColor" 
               placeholder="Search doctors by name or specialization" 
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <button className="btn mt-0 rounded-[0px] rounded-r-md" onClick={handleSearch}>Search</button>
+            <button className="btn mt-0 md:mt-0 rounded-[0px] md:rounded-[0px] rounded-r-md w-full md:w-auto" onClick={handleSearch}>Search</button>
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="container">
+      <section className="py-8 md:py-10">
+        <div className="container px-4">
           {loading && <Loader />}
           {error && <Error />}
           {!loading && !error && (
             doctors && doctors.length > 0 ? (
-              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5'>
                 {doctors.map(doctor => (
                   <DoctorCard key={doctor._id} doctor={doctor} />
                 ))}
